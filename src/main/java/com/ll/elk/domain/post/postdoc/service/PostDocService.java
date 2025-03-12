@@ -2,7 +2,6 @@ package com.ll.elk.domain.post.postdoc.service;
 
 import com.ll.elk.domain.post.postdoc.document.PostDoc;
 import com.ll.elk.domain.post.postdoc.repository.PostDocRepository;
-import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +24,7 @@ public class PostDocService {
         postDocRepository.deleteAll();
     }
 
-    public List<PostDoc> findByTitle(String keyword) {
-        return postDocRepository.findByTitle(keyword);
+    public List<PostDoc> searchByKeyword(String keyword) {
+        return postDocRepository.searchByKeyword(keyword);
     }
 }

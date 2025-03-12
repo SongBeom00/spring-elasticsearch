@@ -6,7 +6,6 @@ import com.ll.elk.global.rsdata.RsData;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +21,7 @@ public class ApiV1PostDocController {
     @PostMapping("/write")
     public RsData<PostDoc> write(@Valid @RequestBody PostDocWriteRequest writeRequest) {
         PostDoc postDoc = postDocService.write(writeRequest.title, writeRequest.content);
-        return new RsData("200", "게시글이 생성되었습니다.",postDoc);
+        return new RsData<>("201", "게시글이 생성되었습니다.",postDoc);
     }
 
 
@@ -33,7 +32,7 @@ public class ApiV1PostDocController {
 
     @GetMapping("/search")
     public List<PostDoc> search(@RequestParam("keyword") String keyword){
-        return postDocService.findByTitle(keyword);
+        return postDocService.searchByKeyword(keyword);
 
     }
 
